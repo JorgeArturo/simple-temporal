@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temporal UI</title>
+</head>
+<body>
+
+<h1>Ejecutar Workflow</h1>
+
+<input type="text" id="name" placeholder="Tu nombre" />
+<button onclick="startWorkflow()">Ejecutar</button>
+
+<p id="result"></p>
+
+<script>
+async function startWorkflow() {
+    const name = document.getElementById("name").value;
+
+    const response = await fetch("/start?name=" + name, {
+        method: "POST"
+    });
+
+    const data = await response.json();
+
+    document.getElementById("result").innerText = data.result;
+}
+</script>
+
+</body>
+</html>
